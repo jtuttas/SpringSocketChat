@@ -27,20 +27,15 @@ deploy:
         - master
     artifacts:
         paths:
-            - target/evplan-1.0-SNAPSHOT-jar-with-dependencies.jar
-            - evplan.sqlite 
-            - start.bat 
+            - target\spring-boot-web-socket-0.0.1-SNAPSHOT.jar
 
 builddocker:
     image: docker:latest
     stage: builddocker
     script:
-        - pwd
-        - find / -name evplan-1.0-SNAPSHOT-jar-with-dependencies.jar
-        - cp /builds/Tuttas/fsi-evplan/target/evplan-1.0-SNAPSHOT-jar-with-dependencies.jar ./ev-plan.jar
-        - echo "$docker" | docker login -u tuttas --password-stdin dev.mm-bbs.de:5050
-        - docker build -t dev.mm-bbs.de:5050/tuttas/fsi-evplan .
-        - docker push dev.mm-bbs.de:5050/tuttas/fsi-evplan
+      - echo "$LOCAL_REGISTRY" | docker login -u root --password-stdin service.joerg-tuttas.de:5555
+      - docker build -t service.joerg-tuttas.de:5555/root/springbootwebsocketdemoapplication .
+      - docker push service.joerg-tuttas.de:5555/root/springbootwebsocketdemoapplication
     dependencies: 
         - deploy
     tags: 
