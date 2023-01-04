@@ -32,9 +32,9 @@ builddocker:
     image: docker:latest
     stage: builddocker
     script:
-      - echo "$LOCAL_REGISTRY" | docker login -u root --password-stdin service.joerg-tuttas.de:5555
-      - docker build -t service.joerg-tuttas.de:5555/root/springbootwebsocketdemoapplication .
-      - docker push service.joerg-tuttas.de:5555/root/springbootwebsocketdemoapplication
+      - echo "$LOCAL_REGISTRY" | docker login -u tuttas --password-stdin
+      - docker build -t tuttas/springbootwebsocketdemoapplication .
+      - docker push tuttas/springbootwebsocketdemoapplication
     dependencies: 
         - deploy
     tags: 
