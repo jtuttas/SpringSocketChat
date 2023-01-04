@@ -1,0 +1,49 @@
+services:
+  - name: docker:dind
+
+variables:
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_DRIVER: overlay2  
+  DOCKER_TLS_CERTDIR: ""
+
+
+cache:
+    paths:
+        - .m2/repository/
+        - target/
+
+stages:
+  - deploy
+  - builddocker
+
+deploy:
+    image: maven:latest
+    stage: deploy
+    script:
+        - mvn package
+    tags: 
+        - myrunner
+    only:
+        - master
+    artifacts:
+        paths:
+            - target/evplan-1.0-SNAPSHOT-jar-with-dependencies.jar
+            - evplan.sqlite 
+            - start.bat 
+
+builddocker:
+    image: docker:latest
+    stage: builddocker
+    script:
+        - pwd
+        - find / -name evplan-1.0-SNAPSHOT-jar-with-dependencies.jar
+        - cp /builds/Tuttas/fsi-evplan/target/evplan-1.0-SNAPSHOT-jar-with-dependencies.jar ./ev-plan.jar
+        - echo "$docker" | docker login -u tuttas --password-stdin dev.mm-bbs.de:5050
+        - docker build -t dev.mm-bbs.de:5050/tuttas/fsi-evplan .
+        - docker push dev.mm-bbs.de:5050/tuttas/fsi-evplan
+    dependencies: 
+        - deploy
+    tags: 
+        - myrunner
+    only:
+        - master
