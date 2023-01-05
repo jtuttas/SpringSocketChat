@@ -10,6 +10,7 @@
         let ws;
 
         function connect() {
+            console.log('Connect to '+location.host);
             ws = new WebSocket("ws://"+location.host+"/chat");
             ws.onmessage = function (e) {
                 printMessage(e.data);
@@ -40,7 +41,7 @@
     </script>
 </head>
 <body>
-    <h1>V0.1</h1>
+    <h1>V0.11</h1>
 <input type="text" id="name"><input id="connectButton" type="button" value="Connect" onclick="connect()">
 <div id="messages"></div>
 <input type="text" id="message">
