@@ -1,0 +1,137 @@
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+.hidden {
+  display: none;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.btn-primary {
+  background: #145189;
+  border: none;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary.disabled:hover,
+.btn-primary.disabled:focus,
+.btn-primary.disabled:active {
+  background: #2970a5;
+  border: none;
+}
+
+#Msg {
+  color: red;
+}
+
+.headline {
+  padding-bottom: 6px;
+  border-bottom: 7px solid #ededed;
+}
+
+#formArea article {
+  height: 180px;
+}
+
+#inputNameFeedback {
+  display: block;
+}
+
+.row {
+  padding-top: 2rem;
+  --bs-gutter-x: 0;
+}
+
+.item {
+  font-size: 13px;
+  margin: 0;
+  margin-bottom: 2px;
+  padding: 0;
+}
+
+#gdat-sign {
+  top: -5px;
+  left: 140px;
+}
+
+a,
+a:link,
+a:visited,
+a:active {
+  color: black;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  text-decoration: underline;
+}
+
+.hidden {
+  display: none;
+}
+
+div.d {
+  font-style: italic;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.chatline {
+  text-align: left;
+}
+
+.system {
+  border-radius: 15px;
+  background: #e388b0;
+
+}
+
+.from {
+  border-radius: 15px;
+  background: #73ad21;
+  padding: 4px;
+}
+
+.frommsg {
+    padding-left: 10px;;
+}
+
+.self {
+    text-align: right;    
+}
