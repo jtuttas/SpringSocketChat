@@ -15,33 +15,48 @@ $(document).ready(function () {
       printMessage(e.data);
     };
     ws.onopen = function () {
+      console.log("onopen()");
       let messageObject = {
         name: "system",
         message: $("#user").val() + " joined the Chat",
       };
       ws.send(JSON.stringify(messageObject));
+      ticker();
+    };
+    ws.onclose = function () {
+      console.log("onclose()");
+      let messageObject = {
+        name: "system",
+        message: $("#user").val() + " leave the Chat",
+      };
+      ws.send(JSON.stringify(messageObject));
+      $("#logindiv").removeClass("hidden");
+      $("#chatdiv").addClass("hidden");
+    };
+    ws.onerror = function (e) {
+      console.log("onerror()" + JSON.stringify(e));
     };
     $("#logindiv").addClass("hidden");
     $("#chatdiv").removeClass("hidden");
   });
 
-  $("#send").click(function (e) { 
-    console.log('Sende '+$("#inputsm").val());
-    sendToGroupChat();    
+  $("#send").click(function (e) {
+    console.log("Sende " + $("#inputsm").val());
+    sendToGroupChat();
   });
 });
 
-/*
-function connect() {
-  ws.onmessage = function (e) {
-    console.log("onmessage()" + e.data);
-    printMessage(e.data);
+function ticker() {
+  console.log("tick");
+  let messageObject = {
+    name: "tick",
+    message: "",
   };
-  document.getElementById("connectButton").disabled = true;
-  document.getElementById("connectButton").value = "Connected";
-  document.getElementById("name").disabled = true;
+  ws.send(null);
+  setTimeout(function () {
+    ticker();
+  }, 3000);
 }
-*/
 
 function printMessage(data) {
   let messageData = JSON.parse(data);
@@ -61,7 +76,7 @@ function printMessage(data) {
 }
 
 function sendToGroupChat() {
-  let messageText =  $("#inputsm").val();
+  let messageText = $("#inputsm").val();
   $("#inputsm").val("");
   let name = $("#user").val();
   let messageObject = {
