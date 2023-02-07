@@ -20,4 +20,4 @@ Anschließend kann über [http://localhost:8080](http://localhost:8080) die Anwe
 
 ## Anleitung zur CI/CD mittels GitHub,Docker und Azure
 
-Eine umfangreiche Anleitung, zur Automatisierung mittels Github Action mit Docker und Azure kann [hier](https://jtuttas.github.io/SpringSocketChat/site/azure1/) geladen werden.
+Eine umfangreiche Anleitung, zur Automatisierung mittels Github Action mit Docker und Azure kann [hier](https://jtuttas.github.io/SpringSocketChat/site/lokal/) geladen werden.

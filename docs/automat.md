@@ -14,5 +14,7 @@ Ebenso kann der Docker Container der Anwendung automatisch via einer GitHub Acti
 
 Die Notwendigen Credentials für das Einloggen auf dem Docker Hub werden in Github hinterlegt.
 
-![credentials](pic3)
+![credentials](pic3.png)
+
+
 
