@@ -1,0 +1,25 @@
+name: Render files
+
+on: [push]
+
+jobs:
+  render:  
+    name: mkdocs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: list files
+        run: 'ls -laR'
+      - name: Deploy docs
+        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        # Or use mhausenblas/mkdocs-deploy-gh-pages@nomaterial to build without the mkdocs-material theme
+        env:
+          CONFIG_FILE: mkdocs.yml 
+      - uses: EndBug/add-and-commit@v7
+        with:
+          # This "special" author name and email will show up as the GH Actions user/bot in the UI
+          author_name: github-actions
+          author_email: 41898282+github-actions[bot]@users.noreply.github.com
+          message: 'Automatically render files'
+          add: "."
