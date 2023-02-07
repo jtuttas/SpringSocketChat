@@ -18,3 +18,4 @@ Die Notwendigen Credentials für das Einloggen auf dem Docker Hub werden in Gith
 
 Bei einem Push auf den master Branch kann man den Ablauf des Workflows auf github beobachten.
 
+![workflow](pic4.png)
