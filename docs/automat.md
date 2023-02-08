@@ -19,3 +19,7 @@ Die Notwendigen Credentials für das Einloggen auf dem Docker Hub werden in Gith
 Bei einem Push auf den master Branch kann man den Ablauf des Workflows auf github beobachten.
 
 ![workflow](pic4.png)
+
+Nun kann man auf jedem Rechner auf dem Docker installiert ist die Anwendung Starten, z.B. bei [Play With Docker](https://labs.play-with-docker.com/).
+
+
