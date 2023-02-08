@@ -19,3 +19,4 @@ extra_javascript:
 nav:
     - Lokal: lokal.md
     - Automatisierung: automat.md
+    - Hosten: hosten.md

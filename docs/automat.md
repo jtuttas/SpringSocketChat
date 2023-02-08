@@ -22,4 +22,4 @@ Bei einem Push auf den master Branch kann man den Ablauf des Workflows auf githu
 
 Nun kann man auf jedem Rechner auf dem Docker installiert ist die Anwendung Starten, z.B. bei [Play With Docker](https://labs.play-with-docker.com/).
 
-
+![Play With Docker](pic5.png)
