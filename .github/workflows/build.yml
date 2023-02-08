@@ -29,7 +29,7 @@ jobs:
         with:
           path: | 
             ./target
-            .
+            ./Dockerfile
           key: $build-${{ env.cache-name }}-${{ github.event.head_commit.message }}
     
 
@@ -44,7 +44,7 @@ jobs:
         with:
           path: | 
             ./target
-            .
+            ./Dockerfile
           key: $build2-${{ env.cache-name }}-${{ github.event.head_commit.message }}
           restore-keys: |
             $build-${{ env.cache-name }}-${{ github.event.head_commit.message }}
@@ -66,6 +66,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          file: ./Dockerfile
       -
         name: Build and push
         uses: docker/build-push-action@v4
