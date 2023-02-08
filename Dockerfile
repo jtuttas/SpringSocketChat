@@ -2,6 +2,7 @@ FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 ARG JAVA_OPTS
 ENV JAVA_OPTS=$JAVA_OPTS
+COPY ./springbootwebsocketdemo.jar .
 EXPOSE 8080
 ENTRYPOINT exec java $JAVA_OPTS -jar springbootwebsocketdemo.jar
 # For Spring-Boot project, use the entrypoint below to reduce Tomcat startup time.
