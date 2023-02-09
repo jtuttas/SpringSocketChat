@@ -1,5 +1,9 @@
 # CI/CD mit github Action, Docker und Azure
 
+Im Folgenden wollen wir ein Java Maven Projekt über einen GitHub Workflow in einen Docker Image veröffentlichen und dieses dann als Container auf Azure starten.
+
+![Überblick](ueberblick.png)
+
 ## Das Software Projekt
 
 Dieses Java Programm realisiert eine Chat-App basierend auf dem Spring boot Framework. Soll die Anwendung lokal gestartet werden, so muss auf dem lokalen Server natürlich **JAVA** als Laufzeitumgebung und **Maven** als Build-Tool installiert sein.
