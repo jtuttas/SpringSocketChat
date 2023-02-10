@@ -1,14 +1,16 @@
-# Importieren der notwendigen Module
+﻿# Importieren der notwendigen Module
 Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -AllowClobber
 
 
 # Anmelden bei Azure
 Connect-AzAccount
 
+## Wenn es hier zu einem Fehler kommt nutzt auch oftmals Connect-AzAccount -UseDeviceAuthentication
+
 # Einige Variable festlegen
 $resourceGroupName = "jtudockerplay"
 $location = "westeurope"
-$imagename = "tuttas/webchat:latest"
+$imagename = "tuttas/webchat"
 $containerName = "jtucontainer"
 $appServicePlaneName = "jtuserviceplan"
 $appName = "jtuapp"
@@ -23,37 +25,10 @@ $rg
 
 
 # Starten des Containers
-New-AzAppServicePlan -Name $appServicePlaneName -Location $location -ResourceGroupName $resourceGroupName -Tier Free -Linux
-New-AzWebApp -Name $appName -AppServicePlan $appServicePlaneName -Location $location -ResourceGroupName $resourceGroupName -ContainerImageName $image -EnableContainerContinuousDeployment
+New-AzAppServicePlan -Name $appServicePlaneName -Location $location -ResourceGroupName $resourceGroupName -Tier BasicB1 -Linux
+New-AZWebApp -Name $appName -AppServicePlan $appServicePlaneName -Location $location -ResourceGroupName $resourceGroupName -ContainerImageName $imagename -EnableContainerContinuousDeployment
 
+$config = Get-AzResource -ResourceGroupName $resourceGroupName -ResourceType Microsoft.Web/sites/config -ResourceName $appName -ApiVersion 2018-02-01
+$config.Properties.linuxFxVersion = "DOCKER|$($imagename):latest"
+$config | Set-AzResource -ApiVersion 2018-02-01 -Force
 
-
-
-
-
-
-
-
-
-
-
-
-Register-AzResourceProvider -ProviderNamespace Microsoft.ContainerInstance
-
-$port1 = New-AzContainerInstancePortObject -Port 8080 -Protocol TCP
-$container = New-AzContainerInstanceObject -Name $containerName -Image $imagename -RequestCpu 1 -RequestMemoryInGb 1.5 -Port @($port1)
-$containerGroup = New-AzContainerGroup -ResourceGroupName $resourceGroupName -Name "mycontainergroup" -Location $location -Container $container -OsType Linux -RestartPolicy "Never" -IpAddressType Public 
-$cg = Get-AzContainerGroup -ResourceGroupName $resourceGroupName
-Write-Host "Access Container: http://$($cg.IPAddressIP):8080"
-
-# Abfragen des Webhooks
-
-
-$containername="testcontainer02"
-$dnsNameLabel="testdns02"
-$OSType="Linux"
-$image ="tuttas/webcaht:latest"
-#New-AzureRmResourceGroup -Name $ResourceGroup -Location $location
-New-AzWebApp -ResourceGroupName $resourceGroupName -Name "jtuazwebapp" -Location $location -AppServicePlan "ContosoServicePlan" -
-
-New-AzWebApp -ResourceGroupName $resourceGroupName -Name "jtudockertest" -ContainerImageName $image  -EnableContainerContinuousDeployment -ContainerRegistryUrl "docker.io" 
