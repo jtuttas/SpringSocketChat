@@ -20,7 +20,8 @@ deploy:
     stage: deploy
     script:
         - mvn package
-        - cp target/spring-boot-web-socket-0.0.1-SNAPSHOT.jar springbootwebsocketdemo.jar
+        - cp target/spring-boot-web-socket-0.0.1-SNAPSHOT.jar ./springbootwebsocketdemo.jar
+        - ls -la
     tags: 
         - myrunner
     only:
@@ -33,6 +34,7 @@ builddocker:
     image: docker:latest
     stage: builddocker
     script:
+      - ls -la
       - echo "$LOCAL_REGISTRY" | docker login -u tuttas --password-stdin
       - docker build -t tuttas/springbootwebsocketdemoapplication .
       - docker push tuttas/springbootwebsocketdemoapplication
