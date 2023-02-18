@@ -3,11 +3,11 @@ VOLUME /tmp
 ARG JAVA_OPTS
 ENV JAVA_OPTS=$JAVA_OPTS
 COPY ./springbootwebsocketdemo.jar .
+
 COPY sshd_config /etc/ssh/
 COPY start.sh ./
-
 # Start and enable SSH
-RUN apk add openssh && echo "root:Docker!" | chpasswd && chmod +x ./entrypoint.sh && cd /etc/ssh/ && ssh-keygen -A
+RUN apk add openssh && echo "root:Docker!" | chpasswd && chmod +x ./start.sh && cd /etc/ssh/ && ssh-keygen -A
 EXPOSE 8080 2222
 ENTRYPOINT [ "./start.sh" ]
 
