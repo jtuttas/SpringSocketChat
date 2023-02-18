@@ -30,6 +30,8 @@ jobs:
           path: | 
             ./target
             ./Dockerfile
+            ./start.sh
+            ./sshd_config
           key: $build-${{ env.cache-name }}-${{ github.event.head_commit.message }}
     
 
@@ -45,6 +47,8 @@ jobs:
           path: | 
             ./target
             ./Dockerfile
+            ./start.sh
+            ./sshd_config
           key: $build2-${{ env.cache-name }}-${{ github.event.head_commit.message }}
           restore-keys: |
             $build-${{ env.cache-name }}-${{ github.event.head_commit.message }}
