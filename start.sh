@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
-service ssh start
+/usr/sbin/sshd
 exec java -jar springbootwebsocketdemo.jar
