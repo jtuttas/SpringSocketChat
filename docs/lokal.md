@@ -4,6 +4,8 @@ Im Folgenden wollen wir ein Java Maven Projekt über einen GitHub Workflow in ei
 
 ![Überblick](ueberblick.png)
 
+![QRCode](qrcode.png)
+
 ## Das Software Projekt
 
 Dieses Java Programm realisiert eine Chat-App basierend auf dem Spring boot Framework. Soll die Anwendung lokal gestartet werden, so muss auf dem lokalen Server natürlich **JAVA** als Laufzeitumgebung und **Maven** als Build-Tool installiert sein.
