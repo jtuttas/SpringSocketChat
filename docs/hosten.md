@@ -78,3 +78,9 @@ $config | Set-AzResource -ApiVersion 2018-02-01 -Force
 ```
 
 Lediglich das Kopieren des Web-Hooks und einfügen beim Docker Hub muss noch manuell gestartet werden. Die oben abgebildete Web App kann dann über [http://jtuapp.azurewebsites.net/](http://jtuapp.azurewebsites.net/) abgerufen werden.
+
+## Dieses Dokument als Webseite
+
+[https://jtuttas.github.io/SpringSocketChat/site/lokal/](https://jtuttas.github.io/SpringSocketChat/site/lokal/)
+
+![QR](qr2.png)

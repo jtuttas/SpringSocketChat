@@ -1,4 +1,4 @@
-**CI/CD mit Docker über GitHub Actions Workshop**
+**CI/CD mit Docker über GitHub Actions**
 
 **Dauer:** 2 Stunden
 
